@@ -1,0 +1,4 @@
+repository "senario/senario 2026-01-28_19-40-55@20067080067780@cloud"
+  path "/"
+    br "/main"
+    co "/main"
