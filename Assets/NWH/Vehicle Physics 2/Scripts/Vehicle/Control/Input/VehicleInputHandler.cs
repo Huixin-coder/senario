@@ -332,8 +332,8 @@ namespace NWH.VehiclePhysics2.Input
         // private AutonomousVehicle AutonomousVehicle;
         // private AVController AVController;
         // private WaypointProgressTracker WaypointProgressTracker;
-        private GameObject TimeElapsed;
-        private HMICases HMICases;
+        // private GameObject TimeElapsed;
+        // private HMICases HMICases;
         private TriggerEyeTracking TET;
         private float ThrottleThreshold = 0;
         private float BrakesThreshold = 0;
@@ -380,9 +380,9 @@ namespace NWH.VehiclePhysics2.Input
 
             // AutonomousVehicle = this.vc.transform.gameObject.GetComponent<AutonomousVehicle>();
             // AVController = this.vc.transform.gameObject.GetComponent<AVController>();
-            HMICases = this.vc.transform.gameObject.GetComponent<HMICases>();
+            // HMICases = this.vc.transform.gameObject.GetComponent<HMICases>();
             // WaypointProgressTracker = this.vc.transform.gameObject.GetComponent<WaypointProgressTracker>();
-            TimeElapsed = GameObject.FindGameObjectWithTag("SceneManager").transform.GetChild(0).transform.GetChild(4).gameObject;
+            // TimeElapsed = GameObject.FindGameObjectWithTag("SceneManager").transform.GetChild(0).transform.GetChild(4).gameObject;
             TET = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<TriggerEyeTracking>();
             // if (AVIsConnected){
             //     if(AVController == null || WaypointProgressTracker == null || AutonomousVehicle == null){

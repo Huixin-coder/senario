@@ -1,0 +1,62 @@
+using System;
+using UnityEngine;
+
+public class WheelController : MonoBehaviour
+{
+    public Transform wheelModel;
+
+
+    [SerializeField] WheelCollider frontRight;
+    [SerializeField] WheelCollider frontLeft;
+    [SerializeField] WheelCollider backRight;
+    [SerializeField] WheelCollider backLeft;
+
+    public float acceleration = 500f;
+    public float breakingForce = 300f;
+    public float maxTurnAngle = 15f;
+
+    private float currentAcceleratetion = 0f;
+    private float currentBreakForce = 0f;
+    private float currentTurnAngle = 0f;
+
+
+    private void FixedUpdate()
+    {
+
+        // Get forward/reserve acceleration form the vertical axis (W and S keys)
+
+        currentAcceleratetion = acceleration * Input.GetAxis("Vertical");
+
+        //If we're pressing space, give currentBreakingForce a value
+        if (Input.GetKey(KeyCode.Space))
+            //currentBreakForce = breakingForce;
+            transform.Translate(Vector3.forward * Time.deltaTime);
+        else
+            currentBreakForce = 0f;
+
+        // Apply acceleration to front wheels.
+        frontRight.motorTorque = currentAcceleratetion;
+        frontLeft.motorTorque = currentAcceleratetion;
+
+        frontRight.brakeTorque = currentBreakForce;
+        frontLeft.brakeTorque = currentBreakForce;
+        backLeft.brakeTorque = currentBreakForce;
+        backRight.brakeTorque = currentBreakForce;
+
+
+        //Take care of the steering.
+        currentTurnAngle = maxTurnAngle * Input.GetAxis("Horizontal");
+        frontLeft.steerAngle = currentTurnAngle;
+        frontRight.steerAngle = currentTurnAngle;
+
+        if (Input.GetKey(KeyCode.UpArrow))
+            //currentBreakForce = breakingForce;
+            transform.Translate(Vector3.back * Time.deltaTime);
+        else
+            currentBreakForce = 0f;
+
+
+
+
+    }
+}
